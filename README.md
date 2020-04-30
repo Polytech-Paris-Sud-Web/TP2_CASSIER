@@ -1,6 +1,6 @@
 # SimpleApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0. (but now it has been upgraded to angular 9)
 
 ## Development server
 
@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## example data
+
+install `json-server` 
+run `json-server --watch db.json`
+
+## 5 - Expliquer pourquoi la migration est interessante pour la suite du cours (un commit "README")
+
+les migrations permettent de:
+- corriger certaines erreurs des versions précédents (notament les failles de sécuritées).
+- proposer de nouvelles optimisation et outils
+- rester à jour pour suivre l'évolution des nouvelles technologies qui ont fait leur apparition depuis la version précédente
+- toujours tendre vers l'état de l'art
