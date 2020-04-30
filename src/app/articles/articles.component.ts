@@ -1,33 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {Article} from "../models/article";
+import { Component, OnInit } from '@angular/core';
+import { Article } from '../article/article.class';
+import { ArticleService } from '../article.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() {
+  articles: Article[] = []
+
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit(): void {
+   this.articleService.getArticles().subscribe(
+      (value) =>　this.articles = value,
+      (error) => console.error('Cannot load articles: ', error)
+    );
   }
 
-  articles(): Article[] {
-    return [{
-      title: 'My First Article',
-      content: 'Hello World',
-      authors: 'Orangefire'
-    }, {
-      title: 'Angular component',
-      content: 'Angular component looks awesome!',
-      authors: 'Orangefire'
-    }, {
-      title: 'Angular service',
-      content: 'I read something about angular service, i will try it soon',
-      authors: 'Orangefire'
-    }];
+  removeArticle(id: number) {
+    this.articles = this.articles.filter(a => a.id != id)
   }
 
-  ngOnInit() {
+  addArticle(article: Article) {
+    this.articles.push(article);
   }
 
 }
