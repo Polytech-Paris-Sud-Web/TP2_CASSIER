@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class ArticlesComponent implements OnInit {
 
   articles: Article[] = []
+  filterValue: string = '';
 
   constructor(private articleService: ArticleService) { }
 
@@ -21,12 +22,19 @@ export class ArticlesComponent implements OnInit {
     );
   }
 
-  removeArticle(id: number) {
+  removeArticle(id: number): void {
     this.articles = this.articles.filter(a => a.id != id)
   }
 
-  addArticle(article: Article) {
+  addArticle(article: Article): void {
     this.articles.push(article);
+  }
+
+  filterArticle(filter: string): void {
+    this.articleService.filterArticle(filter).subscribe(
+      (articles) => this.articles = articles,
+      (error) =>　console.log('cannot filter articles')
+    );
   }
 
 }

@@ -1,2 +1,7 @@
 
+<div>
+  <input placeholder="filter" #search value=""/>
+  <button (click)="filterArticle(search.value)">🔍 search</button>
+  <button (click)="filterArticle('');search.value=''">🗑️ remove filter</button>
+</div>
 <app-article *ngFor="let article of this.articles" [article]="article" (askForDelete)="removeArticle($event.id)"></app-article>
